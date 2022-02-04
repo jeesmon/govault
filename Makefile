@@ -2,7 +2,7 @@ GOCMD=go
 GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 BINARY_NAME=govault
-VERSION=v0.0.1
+VERSION=v0.0.2
 
 all: darwin linux windows
 
