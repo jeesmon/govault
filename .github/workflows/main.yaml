@@ -25,6 +25,6 @@ jobs:
       uses: actions/upload-artifact@v2
       if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'release' }}
       with:
-        name: artifacts
+        name: binary-artifacts.zip
         path: release/
         if-no-files-found: error
