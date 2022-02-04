@@ -37,29 +37,9 @@ jobs:
       uses: actions/upload-release-asset@v1.0.1
       if: ${{ github.event_name == 'release' }}
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
         asset_path: ./release/govault-linux-${{ env.GO_VAULT_VERSION }}
         asset_name: govault-linux-${{ env.GO_VAULT_VERSION }}
-        asset_content_type: binary/octet-stream
-    - name: Upload darwin release artifact
-      uses: actions/upload-release-asset@v1.0.1
-      if: ${{ github.event_name == 'release' }}
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./release/govault-darwin-${{ env.GO_VAULT_VERSION }}
-        asset_name: govault-darwin-${{ env.GO_VAULT_VERSION }}
-        asset_content_type: binary/octet-stream
-    - name: Upload windows release artifact
-      uses: actions/upload-release-asset@v1.0.1
-      if: ${{ github.event_name == 'release' }}
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./release/govault-windows-${{ env.GO_VAULT_VERSION }}
-        asset_name: govault-windows-${{ env.GO_VAULT_VERSION }}
         asset_content_type: binary/octet-stream
