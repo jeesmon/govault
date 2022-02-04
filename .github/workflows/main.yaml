@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run build
+      run: |
+        make all
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'release' }}
+      with:
+        name: artifacts
+        path: release/*
+        if-no-files-found: error
